@@ -16,6 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         //
+        
     }
 
     /**
@@ -39,7 +40,17 @@ class ProductController extends Controller
     {
         //
         try{
+            //validate the input 
+            $request->validate([
+                "name"    => "required",
+                "detail"  => "required",
+            ]);
+            //create a new product in DB 
+            Product::create($request -> all());
 
+            //redirect the user and send friendly mssg 
+
+            return redirect()->route('products.index')->with('success','product created successufully');
         }catch(Exception $e){
             return $e ;
         }

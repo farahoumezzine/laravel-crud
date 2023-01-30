@@ -1,6 +1,9 @@
 <html>
     <head>
         <title>laravel crud </title>
+        <br>
+        <link href="{{asset('/bootstrap.min.css')}}" rel="stylesheet">
+
     </head>
     <body>
      <h1>laravel crud</h1>
