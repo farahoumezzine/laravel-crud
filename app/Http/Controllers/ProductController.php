@@ -50,10 +50,10 @@ class ProductController extends Controller
             Product::create($request -> all());
 
             //redirect the user and send friendly mssg 
-
             return redirect()->route('products.index')->with('success','product created successufully');
-        }catch(Exception $e){
-            return $e ;
+
+        }catch(\Exception $e){
+            return $e->getMessage();
         }
     }
 
@@ -78,6 +78,8 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         //
+        return view('products.edit' , compact('product'));
+
     }
 
     /**
@@ -90,6 +92,21 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         //
+        try{
+            //validate the input 
+            $request->validate([
+                "name"    => "required",
+                "detail"  => "required",
+            ]);
+            //create a new product in DB 
+            $product->update($request -> all());
+
+            //redirect the user and send friendly mssg 
+            return redirect()->route('products.index')->with('success','product updated successufully');
+
+        }catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 
     /**
