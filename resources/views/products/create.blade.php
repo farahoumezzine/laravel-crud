@@ -29,35 +29,24 @@
 
         <div class="row ">
             <div class=" col-xs-12 col-sm-12 col-md-12">
-                <div class="form-control @error('name') is-invalid @enderror" required>
+                <div class="form-control" required>
                 <label for="text1"> Name</label> 
-                <input id="name" name="name" type="text" class="form-control">
+                <input id="name" name="name" type="text" class="form-control  @error('name') is-invalid @enderror">
                 </div>
             </div>
-            @error('name')
-            <span class="invalid-feedback"
-            style="border-color: #fbe1e3;color: #e73d4a;float: left;padding-bottom: 10px; "
-            role="alert">
-            <strong>{{ $message }}</strong>
-            </span>
-            @enderror
+        
     
             
             <div class=" col-xs-12 col-sm-12 col-md-12">
 
-                <div class="form-control @error('detail') is-invalid @enderror" required>
+                <div class="form-control " required>
 
                 <label for="textarea">Detail</label> 
-                <textarea id="detail" name="detail"  cols="40" rows="5" class="form-control"></textarea>
+                <textarea id="detail" name="detail"  cols="40" rows="5" class="form-control @error('detail') is-invalid @enderror"></textarea>
                 </div> 
             </div>
-            @error('detail')
-            <span class="invalid-feedback"
-            style="border-color: #fbe1e3;color: #e73d4a;float: left;padding-bottom: 10px; "
-            role="alert">
-            <strong>{{ $message }}</strong>
-            </span>
-            @enderror
+
+          
         
                 <div class="text-center">
                     <hr>
