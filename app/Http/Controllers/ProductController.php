@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Exception;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\StorePostRequest;
 class ProductController extends Controller
 {
     /**
@@ -37,15 +37,12 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
         //
         try{
             //validate the input 
-            $request->validate([
-                "name"    => "required",
-                "detail"  => "required",
-            ]);
+            $request->validated();
             //create a new product in DB 
             Product::create($request -> all());
 
@@ -89,15 +86,13 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(StorePostRequest $request, Product $product)
     {
         //
         try{
             //validate the input 
-            $request->validate([
-                "name"    => "required",
-                "detail"  => "required",
-            ]);
+            $request->validated();
+
             //create a new product in DB 
             $product->update($request -> all());
 
